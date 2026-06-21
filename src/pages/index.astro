@@ -1,0 +1,270 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const services = [
+  { icon: '🚿', title: 'Geyser Installation', desc: 'Electric, gas & solar geyser supply and installation.', cat: 'plumbing' },
+  { icon: '🔧', title: 'Burst Pipes', desc: '24/7 emergency response. We stop the damage fast.', cat: 'emergency' },
+  { icon: '🚽', title: 'Toilet & Bath', desc: 'Full toilet, sink, and bath installation and repairs.', cat: 'plumbing' },
+  { icon: '🌞', title: 'Solar Geysers', desc: 'Reduce electricity costs with solar geyser systems.', cat: 'plumbing' },
+  { icon: '🏗️', title: 'House Renovations', desc: 'Building, tiling, plastering, painting and more.', cat: 'construction' },
+  { icon: '⚡', title: 'Electrical', desc: 'Wiring, plugs, lights and all electrical problems.', cat: 'electrical' },
+];
+
+const trust = [
+  { icon: '✅', label: 'Licensed & Insured' },
+  { icon: '🕐', label: '24/7 Emergency' },
+  { icon: '⚡', label: 'Fast Response' },
+  { icon: '🏆', label: 'Quality Workmanship' },
+];
+---
+
+<Layout title="Home" description="Ulwandle Plumbing & Construction — professional plumbing, electrical, and construction services. 24/7 emergency call-outs.">
+
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-content">
+        <span class="badge badge-teal hero-badge">24/7 Emergency Service</span>
+        <h1>Professional Plumbing<br />&amp; Construction</h1>
+        <p class="hero-sub">
+          Burst pipe? Geyser down? Need renovations? Ulwandle is your reliable,
+          skilled team for all plumbing, electrical, and construction needs.
+        </p>
+
+        <div class="hero-phones">
+          <a href="tel:0731346229" class="call-btn">📞 Ornat: 073 134 6229</a>
+          <a href="tel:0735902855" class="call-btn">📞 Vela: 073 590 2855</a>
+        </div>
+
+        <div class="hero-actions">
+          <a href="/quote" class="btn btn-primary">Get a Free Quote</a>
+          <a href="/services" class="btn btn-secondary">Our Services</a>
+        </div>
+      </div>
+
+      <!-- Logo display in hero -->
+      <div class="hero-graphic">
+        <img src="/logo.png" alt="Ulwandle Plumbing & Construction" class="hero-logo-img" />
+      </div>
+    </div>
+
+    <!-- Trust bar -->
+    <div class="trust-bar">
+      <div class="container trust-bar-inner">
+        {trust.map(t => (
+          <div class="trust-item">
+            <span>{t.icon}</span>
+            <span>{t.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SERVICES OVERVIEW ── -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">What We Do</h2>
+      <div class="teal-rule"></div>
+      <p class="section-subtitle">From emergency call-outs to full renovations — one team, all trades.</p>
+
+      <div class="grid-3">
+        {services.map(s => (
+          <div class={`service-card service-${s.cat}`}>
+            <div class="service-icon">{s.icon}</div>
+            <h3>{s.title}</h3>
+            <p>{s.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="services-cta">
+        <a href="/services" class="btn btn-outline">View All Services →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WHY ULWANDLE ── -->
+  <section class="section section-alt">
+    <div class="container why-grid">
+      <div class="why-text">
+        <h2>Why Choose Ulwandle?</h2>
+        <div class="teal-rule" style="margin-left: 0;"></div>
+        <p>
+          Ulwandle — the Zulu word for ocean — reflects our approach: deep expertise, flowing
+          reliability, and a calm hand in a crisis. We show up, we fix it, we leave the place clean.
+        </p>
+        <ul class="why-list">
+          <li>✔ Available 24/7 for burst pipes and emergencies</li>
+          <li>✔ Full-service: plumbing, electrical, and construction</li>
+          <li>✔ Fair, upfront pricing — no hidden call-out surprises</li>
+          <li>✔ Local team, fast response times</li>
+          <li>✔ Quality materials and workmanship every job</li>
+        </ul>
+        <a href="/about" class="btn btn-primary" style="margin-top:1.5rem;">Meet the Team</a>
+      </div>
+      <div class="why-numbers">
+        <div class="stat-card">
+          <div class="stat-num">24/7</div>
+          <div class="stat-label">Emergency availability</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">3</div>
+          <div class="stat-label">Trade disciplines</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">15+</div>
+          <div class="stat-label">Services offered</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Job satisfaction goal</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── QUOTE CTA BAND ── -->
+  <section class="cta-band">
+    <div class="container cta-inner">
+      <div>
+        <h2>Need a Quote?</h2>
+        <p>Tell us about your job and we'll get back to you fast.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="/quote" class="btn btn-primary">Request a Quote</a>
+        <a href="tel:0731346229" class="btn btn-secondary">Call Now</a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+/* ── Hero ── */
+.hero {
+  background: var(--navy);
+  color: var(--white);
+  padding: 4rem 0 0;
+}
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2rem;
+  align-items: center;
+  padding-bottom: 3rem;
+}
+.hero-badge { margin-bottom: 1rem; display: inline-block; }
+.hero-content h1 { color: var(--white); margin-bottom: 1rem; }
+.hero-sub { opacity: 0.8; max-width: 520px; margin-bottom: 1.5rem; font-size: 1.05rem; }
+
+.hero-phones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+.call-btn {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  background: rgba(0,180,216,0.15);
+  border: 1.5px solid var(--teal);
+  border-radius: var(--radius);
+  color: var(--teal);
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.call-btn:hover { background: var(--teal); color: var(--navy); }
+
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+.hero-graphic { display: flex; align-items: center; justify-content: center; }
+.hero-logo-img { width: 280px; height: auto; filter: drop-shadow(0 8px 32px rgba(0,0,0,0.35)); }
+
+.trust-bar {
+  background: rgba(255,255,255,0.06);
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding: 1rem 0;
+}
+.trust-bar-inner {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+.trust-item { color: rgba(255,255,255,0.85); }
+
+/* ── Services ── */
+.service-card {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+.service-card:hover {
+  box-shadow: var(--shadow);
+  border-color: var(--teal);
+}
+.service-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+.service-card h3 { margin-bottom: 0.4rem; }
+.service-card p { color: var(--muted); font-size: 0.92rem; }
+.service-emergency { border-top: 3px solid var(--teal); }
+
+.services-cta { text-align: center; margin-top: 2.5rem; }
+
+/* ── Why ── */
+.why-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+.why-text p { color: var(--muted); margin-bottom: 1.25rem; }
+.why-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+.why-list li { color: var(--text); font-size: 0.95rem; }
+
+.why-numbers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.stat-card {
+  background: var(--navy);
+  color: var(--white);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  text-align: center;
+}
+.stat-num { font-size: 2.2rem; font-weight: 800; color: var(--teal); }
+.stat-label { font-size: 0.82rem; opacity: 0.7; margin-top: 0.25rem; text-transform: uppercase; letter-spacing: 0.06em; }
+
+/* ── CTA band ── */
+.cta-band {
+  background: var(--teal);
+  padding: 3rem 0;
+}
+.cta-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+.cta-band h2 { color: var(--navy); margin-bottom: 0.25rem; }
+.cta-band p { color: var(--navy); opacity: 0.75; }
+.cta-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+.cta-band .btn-primary { background: var(--navy); border-color: var(--navy); color: var(--white); }
+.cta-band .btn-primary:hover { background: #0d2d55; border-color: #0d2d55; }
+.cta-band .btn-secondary { border-color: var(--navy); color: var(--navy); }
+.cta-band .btn-secondary:hover { background: var(--navy); color: var(--white); }
+
+@media (max-width: 768px) {
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-graphic { display: none; }
+  .why-grid { grid-template-columns: 1fr; }
+  .cta-inner { text-align: center; justify-content: center; }
+}
+</style>

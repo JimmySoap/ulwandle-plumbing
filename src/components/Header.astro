@@ -1,0 +1,170 @@
+---
+const nav = [
+  { label: 'Home',     href: '/' },
+  { label: 'Services', href: '/services' },
+  { label: 'About',    href: '/about' },
+  { label: 'Contact',  href: '/contact' },
+];
+---
+
+<header class="site-header">
+  <!-- Top strip: emergency numbers -->
+  <div class="top-strip">
+    <div class="container top-strip-inner">
+      <span>⚡ 24/7 Emergency Call-outs</span>
+      <div class="contact-strip">
+        <a href="tel:0731346229" class="phone-link">Ornat: 073 134 6229</a>
+        <span class="divider">·</span>
+        <a href="tel:0735902855" class="phone-link">Vela: 073 590 2855</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main nav bar -->
+  <div class="nav-bar">
+    <div class="container nav-inner">
+      <!-- Logo -->
+      <a href="/" class="logo-link" aria-label="Ulwandle Plumbing & Construction home">
+        <img src="/logo.png" alt="Ulwandle Plumbing & Construction" class="logo-img" />
+      </a>
+
+      <!-- Nav links (desktop) -->
+      <nav class="main-nav" aria-label="Main navigation">
+        {nav.map(({ label, href }) => (
+          <a href={href} class="nav-link">{label}</a>
+        ))}
+        <a href="/quote" class="btn btn-primary nav-cta">Get a Quote</a>
+      </nav>
+
+      <!-- Mobile hamburger -->
+      <button class="hamburger" id="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile drawer -->
+  <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+    {nav.map(({ label, href }) => (
+      <a href={href} class="mobile-nav-link">{label}</a>
+    ))}
+    <a href="/quote" class="btn btn-primary" style="margin: 0.5rem 1.5rem;">Get a Quote</a>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const mobileNav = document.getElementById('mobile-nav');
+  toggle?.addEventListener('click', () => {
+    const open = mobileNav?.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    mobileNav?.setAttribute('aria-hidden', open ? 'false' : 'true');
+  });
+</script>
+
+<style>
+.site-header { position: sticky; top: 0; z-index: 100; }
+
+.top-strip {
+  background: var(--navy);
+  color: rgba(255,255,255,0.8);
+  font-size: 0.82rem;
+  padding: 0.4rem 0;
+}
+.top-strip-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.contact-strip { display: flex; align-items: center; gap: 0.75rem; }
+.contact-strip .phone-link { font-size: 0.85rem; color: var(--teal); font-weight: 700; }
+.divider { color: rgba(255,255,255,0.3); }
+
+.nav-bar {
+  background: var(--white);
+  border-bottom: 2px solid var(--teal);
+  box-shadow: 0 2px 12px rgba(10,35,66,0.08);
+}
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+.logo-img {
+  height: 56px;
+  width: auto;
+  object-fit: contain;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+.nav-link {
+  padding: 0.5rem 0.85rem;
+  color: var(--text);
+  font-weight: 500;
+  border-radius: var(--radius);
+  transition: background 0.15s, color 0.15s;
+  text-decoration: none;
+}
+.nav-link:hover { background: var(--light); color: var(--navy); }
+.nav-cta { margin-left: 0.5rem; }
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.4rem;
+}
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--navy);
+  border-radius: 2px;
+  transition: all 0.2s;
+}
+
+.mobile-nav {
+  display: none;
+  flex-direction: column;
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 0.5rem 0 1rem;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+.mobile-nav.open { max-height: 400px; }
+.mobile-nav-link {
+  padding: 0.8rem 1.5rem;
+  color: var(--text);
+  font-weight: 500;
+  text-decoration: none;
+  border-bottom: 1px solid var(--border);
+}
+.mobile-nav-link:hover { background: var(--offwhite); }
+
+@media (max-width: 768px) {
+  .main-nav { display: none; }
+  .hamburger { display: flex; }
+  .mobile-nav { display: flex; }
+  .top-strip-inner { justify-content: center; }
+  .top-strip span { display: none; }
+}
+</style>

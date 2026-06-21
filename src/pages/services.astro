@@ -1,0 +1,146 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const categories = [
+  {
+    id: 'plumbing',
+    title: 'Plumbing',
+    icon: '🔧',
+    color: 'cat-blue',
+    services: [
+      { name: 'Geyser Installation', desc: 'Supply and installation of electric geysers — all sizes and brands.' },
+      { name: 'Solar Geyser Installation', desc: 'Reduce your electricity bill with a professionally installed solar geyser system.' },
+      { name: 'Gas Geyser Installation', desc: 'Gas geyser supply and certified installation for reliable hot water.' },
+      { name: 'Burst Pipe Repair', desc: 'Emergency burst pipe repair — available 24/7. Call us the moment it happens.' },
+      { name: 'Blocked Drains', desc: 'Drain clearing using professional equipment. Fast, clean, effective.' },
+      { name: 'Toilet Installation', desc: 'New toilet installation, cistern repairs, and seat replacement.' },
+      { name: 'Sink Installation', desc: 'Kitchen and bathroom sink supply, fitting, and plumbing.' },
+      { name: 'Bath Installation', desc: 'Freestanding and built-in bath fitting and plumbing.' },
+      { name: 'Maintenance & Repairs', desc: 'General plumbing maintenance, leak detection, and repairs of all kinds.' },
+    ],
+  },
+  {
+    id: 'electrical',
+    title: 'Electrical',
+    icon: '⚡',
+    color: 'cat-amber',
+    services: [
+      { name: 'House Wiring', desc: 'Full electrical wiring for new builds and re-wiring of existing homes.' },
+      { name: 'Plugs & Light Points', desc: 'New plug sockets, light fittings, and switches installed to code.' },
+      { name: 'Electrical Fault Finding', desc: 'Diagnose and repair all electrical faults — tripping breakers, no power, short circuits.' },
+      { name: 'DB Board Work', desc: 'Distribution board upgrades, additions, and safety inspections.' },
+    ],
+  },
+  {
+    id: 'construction',
+    title: 'Construction & Renovation',
+    icon: '🏗️',
+    color: 'cat-teal',
+    services: [
+      { name: 'House Renovations', desc: 'Complete home renovation projects — planning to finish.' },
+      { name: 'Building', desc: 'New rooms, extensions, outbuildings, and structural work.' },
+      { name: 'Tiling', desc: 'Floor and wall tiling — bathroom, kitchen, indoor and outdoor.' },
+      { name: 'Plastering', desc: 'Internal and external plastering, skim coat, and waterproofing.' },
+      { name: 'Painting', desc: 'Interior and exterior painting — walls, ceilings, and trim.' },
+    ],
+  },
+];
+---
+
+<Layout title="Services" description="Full list of Ulwandle Plumbing & Construction services — plumbing, electrical, tiling, renovations and more.">
+
+  <!-- Page hero -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="badge badge-teal">What We Offer</span>
+      <h1>Our Services</h1>
+      <p>One team covering plumbing, electrical, and construction.<br />Whatever your job, we've got the skills to get it done right.</p>
+    </div>
+  </section>
+
+  <!-- Services by category -->
+  <section class="section">
+    <div class="container">
+      {categories.map(cat => (
+        <div class={`cat-block ${cat.color}`} id={cat.id}>
+          <div class="cat-header">
+            <span class="cat-icon">{cat.icon}</span>
+            <h2>{cat.title}</h2>
+          </div>
+          <div class="grid-3">
+            {cat.services.map(s => (
+              <div class="svc-card">
+                <h3>{s.name}</h3>
+                <p>{s.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-band">
+    <div class="container cta-inner">
+      <div>
+        <h2>Don't see what you need?</h2>
+        <p>Call us — chances are we can help. We take on most trade work.</p>
+      </div>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+        <a href="tel:0731346229" class="btn btn-primary">📞 Call Ornat</a>
+        <a href="tel:0735902855" class="btn btn-secondary">📞 Call Vela</a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+.page-hero {
+  background: var(--navy);
+  color: var(--white);
+  padding: 3.5rem 0;
+  text-align: center;
+}
+.page-hero h1 { color: var(--white); margin: 0.5rem 0; }
+.page-hero p { opacity: 0.75; font-size: 1.05rem; }
+
+.cat-block { margin-bottom: 3.5rem; }
+.cat-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--border);
+}
+.cat-icon { font-size: 1.8rem; }
+.cat-header h2 { margin: 0; }
+
+.cat-blue .cat-header { border-color: var(--teal); }
+.cat-amber .cat-header { border-color: #f59e0b; }
+.cat-teal .cat-header { border-color: #10b981; }
+
+.svc-card {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+.svc-card:hover { box-shadow: var(--shadow); border-color: var(--teal); }
+.svc-card h3 { font-size: 1rem; margin-bottom: 0.4rem; }
+.svc-card p { color: var(--muted); font-size: 0.88rem; line-height: 1.5; }
+
+.cta-band { background: var(--navy); padding: 3rem 0; }
+.cta-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
+.cta-band h2 { color: var(--white); margin-bottom: 0.25rem; }
+.cta-band p { color: rgba(255,255,255,0.6); }
+.cta-band .btn-secondary { border-color: var(--teal); color: var(--teal); }
+.cta-band .btn-secondary:hover { background: var(--teal); color: var(--navy); }
+
+@media (max-width: 768px) {
+  .cta-inner { text-align: center; justify-content: center; }
+}
+</style>

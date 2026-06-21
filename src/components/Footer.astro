@@ -1,0 +1,139 @@
+---
+const year = new Date().getFullYear();
+const services = [
+  'Geyser Installation', 'Solar Geysers', 'Gas Geysers',
+  'Burst Pipes', 'Blocked Drains', 'Toilet & Bath',
+  'House Renovations', 'Tiling', 'Electrical',
+];
+---
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+
+    <!-- Brand -->
+    <div class="footer-brand">
+      <div class="footer-logo">ULWANDLE</div>
+      <p class="footer-tagline">Where water works.</p>
+      <p class="footer-about">
+        Professional plumbing, electrical, and construction services.
+        Reliable, skilled, and ready when you need us.
+      </p>
+      <div class="footer-contacts">
+        <a href="tel:0731346229">📞 Ornat: 073 134 6229</a>
+        <a href="tel:0735902855">📞 Vela: 073 590 2855</a>
+      </div>
+    </div>
+
+    <!-- Services -->
+    <div class="footer-col">
+      <h4>Our Services</h4>
+      <ul>
+        {services.map(s => <li><a href="/services">{s}</a></li>)}
+      </ul>
+    </div>
+
+    <!-- Quick links -->
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/services">All Services</a></li>
+        <li><a href="/about">About Us</a></li>
+        <li><a href="/quote">Get a Quote</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+      <div class="footer-wa">
+        <a href="https://wa.me/27731346229" target="_blank" rel="noopener" class="btn btn-primary wa-btn">
+          💬 WhatsApp Us
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container footer-bottom-inner">
+      <span>&copy; {year} Ulwandle Plumbing &amp; Construction. All rights reserved.</span>
+      <span class="footer-note">24/7 Emergency Service Available</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+.site-footer {
+  background: var(--navy);
+  color: rgba(255,255,255,0.8);
+  padding-top: 3rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 3rem;
+  padding-bottom: 2.5rem;
+}
+
+.footer-logo {
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: var(--white);
+  margin-bottom: 0.25rem;
+}
+.footer-tagline {
+  color: var(--teal);
+  font-style: italic;
+  margin-bottom: 0.75rem;
+}
+.footer-about {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+  opacity: 0.75;
+}
+.footer-contacts { display: flex; flex-direction: column; gap: 0.4rem; }
+.footer-contacts a {
+  color: var(--teal);
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+}
+.footer-contacts a:hover { color: var(--white); }
+
+.footer-col h4 {
+  color: var(--white);
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+.footer-col ul a {
+  color: rgba(255,255,255,0.65);
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.footer-col ul a:hover { color: var(--teal); }
+
+.footer-wa { margin-top: 1.5rem; }
+.wa-btn { font-size: 0.9rem; padding: 0.6rem 1.2rem; }
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding: 1rem 0;
+}
+.footer-bottom-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  opacity: 0.55;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .footer-bottom-inner { justify-content: center; text-align: center; }
+}
+</style>

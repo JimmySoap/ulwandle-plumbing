@@ -1,0 +1,195 @@
+---
+import Layout from '../layouts/Layout.astro';
+// Replace YOUR_FORM_ID below with your actual Formspree endpoint ID
+// Sign up free at https://formspree.io — takes 2 minutes
+const FORMSPREE_ID = 'xzdlpvwl';
+---
+
+<Layout title="Get a Quote" description="Request a free quote from Ulwandle Plumbing & Construction. We respond fast.">
+
+  <section class="page-hero">
+    <div class="container">
+      <span class="badge badge-teal">Free &amp; No Obligation</span>
+      <h1>Get a Quote</h1>
+      <p>Fill in the form and we'll get back to you as soon as possible.<br />For emergencies, please call us directly.</p>
+      <div class="hero-phones">
+        <a href="tel:0731346229" class="call-btn">📞 Ornat: 073 134 6229</a>
+        <a href="tel:0735902855" class="call-btn">📞 Vela: 073 590 2855</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container quote-layout">
+
+      <!-- Form -->
+      <div class="quote-form-wrap">
+        <h2>Request a Quote</h2>
+        <p class="form-intro">Tell us about your job and we'll follow up with a price.</p>
+
+        <form
+          method="POST"
+          action={`https://formspree.io/f/${FORMSPREE_ID}`}
+          class="quote-form"
+        >
+          <div class="grid-2" style="gap:1rem;">
+            <div class="form-group">
+              <label for="name">Your Name *</label>
+              <input type="text" id="name" name="name" required placeholder="John Smith" />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number *</label>
+              <input type="tel" id="phone" name="phone" required placeholder="07X XXX XXXX" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" />
+          </div>
+
+          <div class="form-group">
+            <label for="service">Type of Job *</label>
+            <select id="service" name="service" required>
+              <option value="">— Select a category —</option>
+              <optgroup label="Plumbing">
+                <option>Geyser installation</option>
+                <option>Solar geyser installation</option>
+                <option>Gas geyser installation</option>
+                <option>Burst pipe</option>
+                <option>Blocked drain</option>
+                <option>Toilet / bath / sink installation</option>
+                <option>General plumbing maintenance</option>
+              </optgroup>
+              <optgroup label="Electrical">
+                <option>House wiring</option>
+                <option>Plugs &amp; lights</option>
+                <option>Electrical fault / repair</option>
+              </optgroup>
+              <optgroup label="Construction">
+                <option>House renovation</option>
+                <option>Building work</option>
+                <option>Tiling</option>
+                <option>Plastering</option>
+                <option>Painting</option>
+              </optgroup>
+              <option value="other">Other — describe below</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="location">Job Location / Area *</label>
+            <input type="text" id="location" name="location" required placeholder="e.g. Khayelitsha, Cape Town" />
+          </div>
+
+          <div class="form-group">
+            <label for="message">Job Description *</label>
+            <textarea id="message" name="message" required placeholder="Describe what needs to be done. The more detail, the more accurate our quote."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="urgency">How urgent is this?</label>
+            <select id="urgency" name="urgency">
+              <option value="emergency">🚨 Emergency — call me ASAP</option>
+              <option value="urgent" selected>Within 24 hours</option>
+              <option value="flexible">Within the week</option>
+              <option value="planning">Just planning ahead</option>
+            </select>
+          </div>
+
+          <!-- honeypot anti-spam -->
+          <input type="text" name="_gotcha" style="display:none" />
+
+          <button type="submit" class="btn btn-primary submit-btn">Send Quote Request →</button>
+        </form>
+
+        <p class="form-note">
+          * We respect your privacy. Your details are only used to respond to your quote request.
+        </p>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="quote-sidebar">
+        <div class="sidebar-card emergency-card">
+          <h3>🚨 Emergency?</h3>
+          <p>Don't fill in a form — call us right now.</p>
+          <a href="tel:0731346229" class="btn btn-primary" style="width:100%;justify-content:center;margin-bottom:0.75rem;">
+            📞 Ornat: 073 134 6229
+          </a>
+          <a href="tel:0735902855" class="btn btn-primary" style="width:100%;justify-content:center;">
+            📞 Vela: 073 590 2855
+          </a>
+        </div>
+
+        <div class="sidebar-card">
+          <h3>💬 WhatsApp</h3>
+          <p>Prefer to send photos and chat? Message us on WhatsApp.</p>
+          <a href="https://wa.me/27731346229" target="_blank" rel="noopener" class="btn btn-outline" style="width:100%;justify-content:center;">
+            Open WhatsApp →
+          </a>
+        </div>
+
+        <div class="sidebar-card info-card">
+          <h3>⏱ Response Times</h3>
+          <ul>
+            <li>🚨 <strong>Emergency:</strong> within 1 hour</li>
+            <li>⚡ <strong>Urgent:</strong> same day</li>
+            <li>📅 <strong>Quote requests:</strong> within a few hours</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+.page-hero {
+  background: var(--navy);
+  color: var(--white);
+  padding: 3.5rem 0;
+  text-align: center;
+}
+.page-hero h1 { color: var(--white); margin: 0.5rem 0; }
+.page-hero p { opacity: 0.75; }
+.hero-phones { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.75rem; margin-top: 1rem; }
+.call-btn {
+  padding: 0.55rem 1.1rem;
+  border: 1.5px solid var(--teal);
+  border-radius: var(--radius);
+  color: var(--teal);
+  background: rgba(0,180,216,0.1);
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.call-btn:hover { background: var(--teal); color: var(--navy); }
+
+.quote-layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 3rem;
+  align-items: start;
+}
+.quote-form-wrap h2 { margin-bottom: 0.25rem; }
+.form-intro { color: var(--muted); margin-bottom: 1.75rem; }
+.submit-btn { width: 100%; justify-content: center; margin-top: 0.5rem; padding: 0.9rem; font-size: 1.05rem; }
+.form-note { font-size: 0.8rem; color: var(--muted); margin-top: 1rem; }
+
+.sidebar-card {
+  background: var(--offwhite);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+.sidebar-card h3 { margin-bottom: 0.5rem; font-size: 1rem; }
+.sidebar-card p { color: var(--muted); font-size: 0.9rem; margin-bottom: 0.75rem; }
+.emergency-card { border-color: var(--teal); background: var(--light); }
+.info-card ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.9rem; }
+
+@media (max-width: 900px) {
+  .quote-layout { grid-template-columns: 1fr; }
+  .quote-sidebar { order: -1; }
+}
+</style>
